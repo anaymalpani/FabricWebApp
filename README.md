@@ -4,7 +4,7 @@ By Victor Dods on behalf of LedgerDomain.
 
 ## TL;DR
 
-In the project root, execute the following command.
+In the project root, execute the following command in a terminal.
 
     make generated-artifacts && make initialization && make up
 
