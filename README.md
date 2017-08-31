@@ -10,7 +10,7 @@ In the project root, execute the following command.
 
 This brings up the blockchain network and web server; once you see
 
-    server listening at http://:::3000
+    www.example.com | server listening at http://:::3000
 
 you can then point your browser at `http://localhost:3000` to use the app's web client.
 
