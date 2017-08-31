@@ -2,6 +2,26 @@
 
 By Victor Dods on behalf of LedgerDomain.
 
+## TL;DR
+
+In the project root, execute the following command.
+
+    make generated-artifacts && make initialization && make up
+
+This brings up the blockchain network and web server; once you see
+
+    server listening at http://:::3000
+
+you can then point your browser at `http://localhost:3000` to use the app's web client.
+
+To bring the services down, hit Ctrl+C in the terminal, and then run
+
+    make down
+
+or to run everything again from a fresh state, run the following command.
+
+    make down && make rm-state-volumes && make initialization && make up
+
 ## Prerequisites
 
 It is apparently necessary to have Docker v1.13 (or presumably anything higher).  I was getting inexplicable (and
