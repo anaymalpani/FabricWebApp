@@ -2,7 +2,7 @@
 
 By Victor Dods on behalf of LedgerDomain.
 
-## TL;DR
+## Get Up And Running With A Single Command
 
 In the project root, execute the following command in a terminal.
 
@@ -14,13 +14,13 @@ This brings up the blockchain network and web server; once you see
 
 you can then point your browser at `http://localhost:3000` to use the app's web client.
 
-To bring the services down, hit Ctrl+C in the terminal, and then run
+To bring the services down, hit Ctrl+C in the terminal.  The following command resets everything to
+a completely clean state.
 
-    make down
+    make clean
 
-or to run everything again from a fresh state, run the following command.
-
-    make down && make rm-state-volumes && make initialization && make up
+Note that there are more minimal sets of commands that could be used for iteration during development, but
+this one should suffice, if draconian.
 
 ## Prerequisites
 
