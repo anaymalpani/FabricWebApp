@@ -146,6 +146,11 @@ Docker volumes:
 -   `fabricwebapp_com_skraukosaur_www__home_volume` : Keystore(s) and other persistent state used by the www.skraukosaur.com web server
 -   `fabricwebapp_com_skraukosaur_www__node_modules_volume` : The `node_modules` directory used by the www.skraukosaur.com web server
 
+Docker images:
+-   `www.skraukosaur.com-env:v0.0` : The image, based on `hyperledger/fabric-baseimage:x86_64-0.3.1`, is what the
+    `www.skraukosaur.com` service runs within.  It installs a couple of python2 packages via apt-get that are needed
+    for the `npm install` process to succeed.
+
 ## Finer-grained Instructions
 
 There are several `make` targets that make controlling the docker-compose services defined in `docker-compose.yaml`
