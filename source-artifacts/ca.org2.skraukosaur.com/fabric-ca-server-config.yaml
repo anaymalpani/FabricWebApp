@@ -211,7 +211,7 @@ signing:
 #     CA certificates though it can still issue end entity certificates.
 ###########################################################################
 csr:
-    cn: ca.org0.example.com
+    cn: ca.skraukosaur.com
     names:
         -   C: US
             ST: CA
@@ -219,7 +219,7 @@ csr:
             O: vdods
             OU: FabricWebApp
     hosts:
-        -   ca.org0.example.com
+        -   ca.skraukosaur.com
         -   localhost
     ca:
         expiry: 131400h

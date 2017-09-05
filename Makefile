@@ -1,15 +1,15 @@
 # PHONY targets have no dependencies and they will be built unconditionally upon request.
-.PHONY: generated-artifacts initialization-org0.example.com initialization-org1.example.com initialization-org2.example.com initialization-www.example.com initialization inspect-initialized-volumes up up-detached logs-follow down down-full down-chaincode down-chaincode-full show-all-generated-resources rm-state-volumes rm-node-modules rm-chaincode-docker-resources clean
+.PHONY: generated-artifacts initialization-org0.skraukosaur.com initialization-org1.skraukosaur.com initialization-org2.skraukosaur.com initialization-www.skraukosaur.com initialization inspect-initialized-volumes up up-detached logs-follow down down-full down-chaincode down-chaincode-full show-all-generated-resources rm-www-image rm-state-volumes rm-node-modules rm-chaincode-docker-resources clean
 
 # This is also hardcoded in .env, so if you change it here, you must change it there.  Note that
 # it must be in all-lowercase, as docker-compose changes it to lowercase anyway.
 COMPOSE_PROJECT_NAME := fabricwebapp
 
 GENERATED_ARTIFACTS_VOLUME := $(COMPOSE_PROJECT_NAME)_generated_artifacts__volume
-COM_EXAMPLE_ORG0_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_example_org0_ca__volume $(COMPOSE_PROJECT_NAME)_com_example_org0_peer0__volume $(COMPOSE_PROJECT_NAME)_com_example_org0_peer1__volume
-COM_EXAMPLE_ORG1_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_example_org1_ca__volume $(COMPOSE_PROJECT_NAME)_com_example_org1_peer0__volume $(COMPOSE_PROJECT_NAME)_com_example_org1_peer1__volume
-COM_EXAMPLE_ORG2_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_example_org2_ca__volume $(COMPOSE_PROJECT_NAME)_com_example_org2_orderer__volume
-COM_EXAMPLE_WWW_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_example_www__config_volume
+COM_EXAMPLE_ORG0_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org0_ca__volume $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org0_peer0__volume $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org0_peer1__volume
+COM_EXAMPLE_ORG1_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org1_ca__volume $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org1_peer0__volume $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org1_peer1__volume
+COM_EXAMPLE_ORG2_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org2_ca__volume $(COMPOSE_PROJECT_NAME)_com_skraukosaur_org2_orderer__volume
+COM_EXAMPLE_WWW_VOLUMES := $(COMPOSE_PROJECT_NAME)_com_skraukosaur_www__config_volume
 
 # Default make rule
 all:
@@ -30,31 +30,31 @@ down-generated-artifacts:
 	docker-compose -f docker/generated-artifacts.yaml down
 
 # TODO: Put failsafes in to prevent calling this twice?
-initialization-org0.example.com:
+initialization-org0.skraukosaur.com:
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(GENERATED_ARTIFACTS_VOLUME)
-	docker-compose -f docker/initialization.yaml up com_example_org0__initialize
+	docker-compose -f docker/initialization.yaml up com_skraukosaur_org0__initialize
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(COM_EXAMPLE_ORG0_VOLUMES)
 
-initialization-org1.example.com:
+initialization-org1.skraukosaur.com:
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(GENERATED_ARTIFACTS_VOLUME)
-	docker-compose -f docker/initialization.yaml up com_example_org1__initialize
+	docker-compose -f docker/initialization.yaml up com_skraukosaur_org1__initialize
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(COM_EXAMPLE_ORG1_VOLUMES)
 
-initialization-org2.example.com:
+initialization-org2.skraukosaur.com:
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(GENERATED_ARTIFACTS_VOLUME)
-	docker-compose -f docker/initialization.yaml up com_example_org2__initialize
+	docker-compose -f docker/initialization.yaml up com_skraukosaur_org2__initialize
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(COM_EXAMPLE_ORG2_VOLUMES)
 
-initialization-www.example.com:
+initialization-www.skraukosaur.com:
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(GENERATED_ARTIFACTS_VOLUME)
-	docker-compose -f docker/initialization.yaml up com_example_www__initialize
+	docker-compose -f docker/initialization.yaml up com_skraukosaur_www__initialize
 	# This command succeeds if and only if the specified volumes exist
 	docker volume inspect $(COM_EXAMPLE_WWW_VOLUMES)
 
@@ -62,7 +62,7 @@ initialization-www.example.com:
 # The -j1 is important here, otherwise docker creates multiple networks named fabricwebapp_default
 # due to idiotic design in docker -- https://github.com/moby/moby/issues/18864
 initialization:
-	$(MAKE) -j1 initialization-org0.example.com initialization-org1.example.com initialization-org2.example.com initialization-www.example.com
+	$(MAKE) -j1 initialization-org0.skraukosaur.com initialization-org1.skraukosaur.com initialization-org2.skraukosaur.com initialization-www.skraukosaur.com
 	docker-compose -f docker/initialization.yaml down
 
 # Brings down the services defined in docker/initialization.yaml
@@ -95,17 +95,17 @@ down-full:
 
 # Bring down the chaincode containers
 down-chaincode:
-	docker rm dev-peer0.org0.example.com-mycc-v0 \
-	          dev-peer1.org0.example.com-mycc-v0 \
-	          dev-peer0.org1.example.com-mycc-v0 \
-	          dev-peer1.org1.example.com-mycc-v0; \
+	docker rm dev-peer0.org0.skraukosaur.com-mycc-v0 \
+	          dev-peer1.org0.skraukosaur.com-mycc-v0 \
+	          dev-peer0.org1.skraukosaur.com-mycc-v0 \
+	          dev-peer1.org1.skraukosaur.com-mycc-v0; \
 	true
 
 down-chaincode-full: down-chaincode
-	docker rmi dev-peer0.org0.example.com-mycc-v0 \
-	           dev-peer1.org0.example.com-mycc-v0 \
-	           dev-peer0.org1.example.com-mycc-v0 \
-	           dev-peer1.org1.example.com-mycc-v0; \
+	docker rmi dev-peer0.org0.skraukosaur.com-mycc-v0 \
+	           dev-peer1.org0.skraukosaur.com-mycc-v0 \
+	           dev-peer0.org1.skraukosaur.com-mycc-v0 \
+	           dev-peer1.org1.skraukosaur.com-mycc-v0; \
 	true
 
 # Shows all non-source resources that this project created that currently still exist.
@@ -113,11 +113,11 @@ down-chaincode-full: down-chaincode
 show-all-generated-resources:
 	docker network ls | grep $(COMPOSE_PROJECT_NAME)_ || true
 	@echo ""
-	docker ps -a | grep example.com || true
+	docker ps -a | grep skraukosaur.com || true
 	@echo ""
 	docker volume ls | grep $(COMPOSE_PROJECT_NAME)_ || true
 	@echo ""
-	docker images | grep -E "$(COMPOSE_PROJECT_NAME)|example.com" || true
+	docker images | grep -E "$(COMPOSE_PROJECT_NAME)|skraukosaur.com" || true
 
 # Build the chaincode using the hyperledger/fabric-ccenv image.  This make target would be
 # used during chaincode development to quickly find and correct compile errors.
@@ -129,6 +129,10 @@ build-chaincode:
 rm-build-chaincode-state:
 	docker-compose -f docker/build-chaincode.yaml down && docker volume rm fabricwebapp_build_chaincode_volume
 
+# Delete the image in which the www.skraukosaur.com service runs.
+rm-www-image:
+	docker rmi www.skraukosaur.com-env:v0.0
+
 # Delete the "state" volumes -- tmp dir (which contains the webserver's key store) and HFC key/value store in
 # home dir This can be done after `make down` to reset things to a "clean state", without needing to recompile go code or
 # run `npm install` from scratch.  The shell "or" with `true` is so this command never fails.
@@ -138,13 +142,13 @@ rm-state-volumes:
 	$(COM_EXAMPLE_ORG1_VOLUMES) \
 	$(COM_EXAMPLE_ORG2_VOLUMES) \
 	$(COM_EXAMPLE_WWW_VOLUMES) \
-	$(COMPOSE_PROJECT_NAME)_com_example_www__home_volume \
+	$(COMPOSE_PROJECT_NAME)_com_skraukosaur_www__home_volume \
 	|| true
 
 # Delete the node_modules dir, in case things get inexplicably screwy and you just feel like you have to nuke something.
 # The shell "or" with `true` is so this command never fails.
 rm-node-modules:
-	docker volume rm $(COMPOSE_PROJECT_NAME)_com_example_www__node_modules_volume || true
+	docker volume rm $(COMPOSE_PROJECT_NAME)_com_skraukosaur_www__node_modules_volume || true
 
 # Delete generated_artifacts__volume.  This contains all cryptographic material and some channel config material.
 # BE REALLY CAREFUL ABOUT RUNNING THIS ONE, BECAUSE IT CONTAINS YOUR ROOT CA CERTS/KEYS.
@@ -156,11 +160,11 @@ rm-generated-artifacts: down-initialization
 # then this is not necessary.  The semicolons are to run the commands sequentially without heeding the exit code.  The
 # command `true` is called last so that the make rule is always considered to have succeeded.
 rm-chaincode-docker-resources:
-	docker rm dev-peer0.org0.example.com-mycc-v0 \
-	          dev-peer1.org0.example.com-mycc-v0 \
-	          dev-peer0.org1.example.com-mycc-v0 \
-	          dev-peer1.org1.example.com-mycc-v0; \
-	docker images | egrep dev-peer.*example.com | awk '{ print $$1 }' | xargs docker rmi -f; \
+	docker rm dev-peer0.org0.skraukosaur.com-mycc-v0 \
+	          dev-peer1.org0.skraukosaur.com-mycc-v0 \
+	          dev-peer0.org1.skraukosaur.com-mycc-v0 \
+	          dev-peer1.org1.skraukosaur.com-mycc-v0; \
+	docker images | egrep dev-peer.*skraukosaur.com | awk '{ print $$1 }' | xargs docker rmi -f; \
 	true
 
 # Deletes all non-source resources that this project created that currently still exist.  This should
@@ -169,7 +173,7 @@ rm-chaincode-docker-resources:
 # generation of intermediate CAs, then it contains the only copies of your root CAs' keys.
 rm-all-generated-resources:
 	$(MAKE) down down-generated-artifacts down-initialization
-	$(MAKE) rm-state-volumes rm-node-modules rm-generated-artifacts rm-chaincode-docker-resources
+	$(MAKE) rm-www-image rm-state-volumes rm-node-modules rm-generated-artifacts rm-chaincode-docker-resources
 	$(MAKE) rm-build-chaincode-state rm-chaincode-docker-resources
 
 # Alias for rm-all-generated-resources.  NOTE: USE WITH CAUTION!

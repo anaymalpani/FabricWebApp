@@ -11,9 +11,9 @@
 # Organization info where each line is of the form:
 #    <type>:<orgName>:<rootCAPort>:<intermediateCAPort>:<numOrderersOrPeers>
 ORGS="\
-   orderer:org2.example.com:7054:7055:1 \
-   peer:org0.example.com:7056:7057:2 \
-   peer:org1.example.com:7058:7059:2 \
+   orderer:org2.skraukosaur.com:7054:7055:1 \
+   peer:org0.skraukosaur.com:7056:7057:2 \
+   peer:org1.skraukosaur.com:7058:7059:2 \
 "
 
 # If true, uses both a root and intermediate CA

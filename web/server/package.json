@@ -2,6 +2,10 @@
   "name": "FabricWebApp",
   "version": "0.0.1",
   "description": "An end-to-end demonstration app using Hyperledger Fabric.",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/LedgerDomain/FabricWebApp"
+  },
   "scripts": {
     "start": "DEBUG=hfc node app.js",
     "test": "DEBUG=hfc node test.js"

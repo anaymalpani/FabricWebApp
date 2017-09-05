@@ -10,7 +10,7 @@ In the project root, execute the following command in a terminal.
 
 This brings up the blockchain network and web server; once you see
 
-    www.example.com | server listening at http://:::3000
+    www.skraukosaur.com | server listening at http://:::3000
 
 you can then point your browser at `http://localhost:3000` to use the app's web client.
 
@@ -103,20 +103,20 @@ accounts.  It's based on the `balance-transfer` example from [http://github.com/
 The components of this application (hostname and description) are:
 -   Org0 components:
     -   <N/A> : Org0's (root) CA (certificate authority) which, to keep the root cert/key safe, is not run online
-    -   ca.org0.example.com : Org0's (intermediate) CA which is run online
-    -   peer0.org0.example.com : Org0's peer0 node
-    -   peer1.org0.example.com : Org0's peer1 node
+    -   ca.org0.skraukosaur.com : Org0's (intermediate) CA which is run online
+    -   peer0.org0.skraukosaur.com : Org0's peer0 node
+    -   peer1.org0.skraukosaur.com : Org0's peer1 node
 -   Org1 components:
     -   <N/A> : Org1's (root) CA which, to keep the root cert/key safe, is not run online
-    -   ca.org1.example.com : Org1's (intermediate) CA which is run online
-    -   peer0.org1.example.com : Org0's peer0 node
-    -   peer0.org1.example.com : Org0's peer1 node
+    -   ca.org1.skraukosaur.com : Org1's (intermediate) CA which is run online
+    -   peer0.org1.skraukosaur.com : Org0's peer0 node
+    -   peer0.org1.skraukosaur.com : Org0's peer1 node
 -   Org2 components:
     -   <N/A> : Org2's (root) CA which, to keep the root cert/key safe, is not run online
     -   <N/A> : Org2's (intermediate) CA which is not run online because it's not used in this app after initialization
-    -   orderer.org2.example.com : Org2's orderer node
+    -   orderer.org2.skraukosaur.com : Org2's orderer node
 -   Other components:
-    -   www.example.com : The web server (not formally associated with an organization like the others components are)
+    -   www.skraukosaur.com : The web server (not formally associated with an organization like the others components are)
 
 The `docker-compose.yaml` file and the supporting `docker/ca-base.yaml` and `docker/peer-base.yaml` files are what
 define the services that run.
@@ -133,18 +133,18 @@ Docker volumes:
     and CA-generated materials -- the `crypto-config` dir created by `fabric-ca-cryptogen.sh`, the `mychannel.tx`
     channel configuration used to create the channel for use by the blockchain app, and the `orderer.genesis.block`
     file used to initialize the blockchain with the participating organizations' credentials.
--   `fabricwebapp_com_example_org0_ca__volume` : Org0's CA and state (user registration and enrollment)
--   `fabricwebapp_com_example_org0_peer0__volume` : Org0's peer0 configuration and state
--   `fabricwebapp_com_example_org0_peer1__volume` : Org0's peer1 configuration and state
--   `fabricwebapp_com_example_org1_ca__volume` : Org1's CA and state (user registration and enrollment)
--   `fabricwebapp_com_example_org1_peer0__volume` : Org1's peer0 configuration and state
--   `fabricwebapp_com_example_org1_peer1__volume` : Org1's peer1 configuration and state
--   `fabricwebapp_com_example_org2_ca__volume` : Org2's CA and state (user registration and enrollment), though this is
+-   `fabricwebapp_com_skraukosaur_org0_ca__volume` : Org0's CA and state (user registration and enrollment)
+-   `fabricwebapp_com_skraukosaur_org0_peer0__volume` : Org0's peer0 configuration and state
+-   `fabricwebapp_com_skraukosaur_org0_peer1__volume` : Org0's peer1 configuration and state
+-   `fabricwebapp_com_skraukosaur_org1_ca__volume` : Org1's CA and state (user registration and enrollment)
+-   `fabricwebapp_com_skraukosaur_org1_peer0__volume` : Org1's peer0 configuration and state
+-   `fabricwebapp_com_skraukosaur_org1_peer1__volume` : Org1's peer1 configuration and state
+-   `fabricwebapp_com_skraukosaur_org2_ca__volume` : Org2's CA and state (user registration and enrollment), though this is
     not used by a running service
--   `fabricwebapp_com_example_org2_orderer__volume` : Org2's orderer configuration and state
--   `fabricwebapp_com_example_www__config_volume` : Crypto/config materials used by the www.example.com web server
--   `fabricwebapp_com_example_www__home_volume` : Keystore(s) and other persistent state used by the www.example.com web server
--   `fabricwebapp_com_example_www__node_modules_volume` : The `node_modules` directory used by the www.example.com web server
+-   `fabricwebapp_com_skraukosaur_org2_orderer__volume` : Org2's orderer configuration and state
+-   `fabricwebapp_com_skraukosaur_www__config_volume` : Crypto/config materials used by the www.skraukosaur.com web server
+-   `fabricwebapp_com_skraukosaur_www__home_volume` : Keystore(s) and other persistent state used by the www.skraukosaur.com web server
+-   `fabricwebapp_com_skraukosaur_www__node_modules_volume` : The `node_modules` directory used by the www.skraukosaur.com web server
 
 ## Finer-grained Instructions
 
@@ -164,7 +164,7 @@ easier.
 
         make initialization
 
-    Creates the `fabricwebapp_com_example_*__volume` docker volumes and copies the necessary files from
+    Creates the `fabricwebapp_com_skraukosaur_*__volume` docker volumes and copies the necessary files from
     `fabricwebapp_generated_artifacts__volume` to the respective volumes.  This represents the communication of
     configuration/cryptographic material via out-of-bands channels to the participating servers.
 
@@ -202,7 +202,7 @@ easier.
 
     is a convenient single command you can use after stopping services to reset all services back to a clean state
     and restart them, following the services' logs.  There is typically no need to delete the persistent
-    `fabricwebapp_com_example_www__node_modules_volume` volume because it is not likely to qualitatively change or
+    `fabricwebapp_com_skraukosaur_www__node_modules_volume` volume because it is not likely to qualitatively change or
     be corrupted (though that does happen sometimes during development for various reasons).  Note that the web
     server service in `docker-compose.yaml` does execute the command `npm install`, so any updates to
     `web/server/package.json` should automatically take effect.
@@ -232,6 +232,12 @@ easier.
 
     deletes the build artifacts generated by `make build-chaincode`, and can be used to force a "clean build"
     of the chaincode.
+
+-   The command
+
+        make rm-www-image
+
+    deletes the docker image in which the www.skraukosaur.com service runs.
 
 -   The command
 
@@ -300,7 +306,7 @@ as expected.  The test script must be run against a "fresh" server.
 
 -   Get the trustedRoots verification working for TLS connection to CA.  As noted in Random Notes, it is currently
     disabled, and therefore is vulnerable to man-in-the-middle attacks.
--   Use the fabric-ca-server-config.yaml files for ca.orgN.example.com in fabric-ca-cryptogen.sh so that the CAs can
+-   Use the fabric-ca-server-config.yaml files for ca.orgN.skraukosaur.com in fabric-ca-cryptogen.sh so that the CAs can
     be custom configured.
 -   Verify that the state is preserved correctly between calls, and that the web server correctly handles existing
     persistent data in its keystore (regarding enrollment).

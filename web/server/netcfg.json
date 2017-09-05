@@ -6,11 +6,11 @@
             "ca": {
                 "remote": {
                     "base_protocol": "http",
-                    "host": "ca.org0.example.com",
+                    "host": "ca.org0.skraukosaur.com",
                     "port": 7054
                 },
                 "trusted_root_paths": [
-                    "/var/hyperledger/www/config/crypto-config/org0.example.com/trusted-roots/ca-cert.pem"
+                    "/var/hyperledger/www/config/crypto-config/org0.skraukosaur.com/trusted-roots/ca-cert.pem"
                 ],
                 "__WARNING": "I wasn't able to get specification of trusted roots to work; nodejs TLS connection doesn't seem to properly handle the certs (or it's a configuration problem in fabric-ca-cryptogen.sh).  Specifying rejectUnauthorized:false disables the check that the TLS server's cert is signed by a trusted authority, but still uses TLS to encrypt the connection.",
                 "rejectUnauthorized": false,
@@ -19,41 +19,41 @@
             "orderers": {
             },
             "peers": {
-                "peer0.org0.example.com": {
+                "peer0.org0.skraukosaur.com": {
                     "requests_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer0.org0.example.com",
+                        "host": "peer0.org0.skraukosaur.com",
                         "port": 7051
                     },
                     "events_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer0.org0.example.com",
+                        "host": "peer0.org0.skraukosaur.com",
                         "port": 7053
                     },
-                    "ssl_target_name_override": "peer0.org0.example.com",
-                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org0.example.com/trusted-roots/ca-cert.pem"
+                    "ssl_target_name_override": "peer0.org0.skraukosaur.com",
+                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org0.skraukosaur.com/trusted-roots/ca-cert.pem"
                 },
-                "peer1.org0.example.com": {
+                "peer1.org0.skraukosaur.com": {
                     "requests_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer1.org0.example.com",
+                        "host": "peer1.org0.skraukosaur.com",
                         "port": 7051
                     },
                     "events_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer1.org0.example.com",
+                        "host": "peer1.org0.skraukosaur.com",
                         "port": 7053
                     },
-                    "ssl_target_name_override": "peer1.org0.example.com",
-                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org0.example.com/trusted-roots/ca-cert.pem"
+                    "ssl_target_name_override": "peer1.org0.skraukosaur.com",
+                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org0.skraukosaur.com/trusted-roots/ca-cert.pem"
                 }
             },
             "users": {
                 "Admin": {
-                    "msp_path": "/var/hyperledger/www/config/crypto-config/org0.example.com/users/Admin@org0.example.com/msp"
+                    "msp_path": "/var/hyperledger/www/config/crypto-config/org0.skraukosaur.com/users/Admin@org0.skraukosaur.com/msp"
                 },
                 "User1": {
-                    "msp_path": "/var/hyperledger/www/config/crypto-config/org0.example.com/users/User1@org0.example.com/msp"
+                    "msp_path": "/var/hyperledger/www/config/crypto-config/org0.skraukosaur.com/users/User1@org0.skraukosaur.com/msp"
                 }
             }
         },
@@ -63,11 +63,11 @@
             "ca": {
                 "remote": {
                     "base_protocol": "http",
-                    "host": "ca.org1.example.com",
+                    "host": "ca.org1.skraukosaur.com",
                     "port": 7054
                 },
                 "trusted_root_paths": [
-                    "/var/hyperledger/www/config/crypto-config/org1.example.com/trusted-roots/ca-cert.pem"
+                    "/var/hyperledger/www/config/crypto-config/org1.skraukosaur.com/trusted-roots/ca-cert.pem"
                 ],
                 "__WARNING": "I wasn't able to get specification of trusted roots to work; nodejs TLS connection doesn't seem to properly handle the certs (or it's a configuration problem in fabric-ca-cryptogen.sh).  Specifying rejectUnauthorized:false disables the check that the TLS server's cert is signed by a trusted authority, but still uses TLS to encrypt the connection.",
                 "rejectUnauthorized": false,
@@ -76,41 +76,41 @@
             "orderers": {
             },
             "peers": {
-                "peer0.org1.example.com": {
+                "peer0.org1.skraukosaur.com": {
                     "requests_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer0.org1.example.com",
+                        "host": "peer0.org1.skraukosaur.com",
                         "port": 7051
                     },
                     "events_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer0.org1.example.com",
+                        "host": "peer0.org1.skraukosaur.com",
                         "port": 7053
                     },
-                    "ssl_target_name_override": "peer0.org1.example.com",
-                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org1.example.com/trusted-roots/ca-cert.pem"
+                    "ssl_target_name_override": "peer0.org1.skraukosaur.com",
+                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org1.skraukosaur.com/trusted-roots/ca-cert.pem"
                 },
-                "peer1.org1.example.com": {
+                "peer1.org1.skraukosaur.com": {
                     "requests_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer1.org1.example.com",
+                        "host": "peer1.org1.skraukosaur.com",
                         "port": 7051
                     },
                     "events_remote": {
                         "base_protocol": "grpc",
-                        "host": "peer1.org1.example.com",
+                        "host": "peer1.org1.skraukosaur.com",
                         "port": 7053
                     },
-                    "ssl_target_name_override": "peer1.org1.example.com",
-                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org1.example.com/trusted-roots/ca-cert.pem"
+                    "ssl_target_name_override": "peer1.org1.skraukosaur.com",
+                    "peer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org1.skraukosaur.com/trusted-roots/ca-cert.pem"
                 }
             },
             "users": {
                 "Admin": {
-                    "msp_path": "/var/hyperledger/www/config/crypto-config/org1.example.com/users/Admin@org1.example.com/msp"
+                    "msp_path": "/var/hyperledger/www/config/crypto-config/org1.skraukosaur.com/users/Admin@org1.skraukosaur.com/msp"
                 },
                 "User1": {
-                    "msp_path": "/var/hyperledger/www/config/crypto-config/org1.example.com/users/User1@org1.example.com/msp"
+                    "msp_path": "/var/hyperledger/www/config/crypto-config/org1.skraukosaur.com/users/User1@org1.skraukosaur.com/msp"
                 }
             }
         },
@@ -119,21 +119,21 @@
             "mspid": "Org2MSP",
             "ca": null,
             "orderers": {
-                "orderer.org2.example.com": {
+                "orderer.org2.skraukosaur.com": {
                     "remote": {
                         "base_protocol": "grpc",
-                        "host": "orderer.org2.example.com",
+                        "host": "orderer.org2.skraukosaur.com",
                         "port": 7050
                     },
-                    "ssl_target_name_override": "orderer.org2.example.com",
-                    "orderer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org2.example.com/trusted-roots/ca-cert.pem"
+                    "ssl_target_name_override": "orderer.org2.skraukosaur.com",
+                    "orderer_tls_cacert_path": "/var/hyperledger/www/config/crypto-config/org2.skraukosaur.com/trusted-roots/ca-cert.pem"
                 }
             },
             "peers": {
             },
             "users": {
                 "Admin": {
-                    "msp_path": "/var/hyperledger/www/config/crypto-config/org2.example.com/users/Admin@org2.example.com/msp"
+                    "msp_path": "/var/hyperledger/www/config/crypto-config/org2.skraukosaur.com/users/Admin@org2.skraukosaur.com/msp"
                 }
             }
         }

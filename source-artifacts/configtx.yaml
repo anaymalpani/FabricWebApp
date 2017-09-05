@@ -48,7 +48,7 @@ Organizations:
         ID: Org2MSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: ../generated-artifacts/crypto-config/ordererOrganizations/org2.example.com/msp
+        MSPDir: ../generated-artifacts/crypto-config/ordererOrganizations/org2.skraukosaur.com/msp
 
     - &Org0
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -58,13 +58,13 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org0MSP
 
-        MSPDir: ../generated-artifacts/crypto-config/peerOrganizations/org0.example.com/msp
+        MSPDir: ../generated-artifacts/crypto-config/peerOrganizations/org0.skraukosaur.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.org0.example.com
+            - Host: peer0.org0.skraukosaur.com
               Port: 7051
 
     - &Org1
@@ -76,13 +76,13 @@ Organizations:
         ID: Org1MSP
 
         # QUESTION: Why is there a path in the configtx?
-        MSPDir: ../generated-artifacts/crypto-config/peerOrganizations/org1.example.com/msp
+        MSPDir: ../generated-artifacts/crypto-config/peerOrganizations/org1.skraukosaur.com/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.org1.example.com
+            - Host: peer0.org1.skraukosaur.com
               Port: 7051
 
 ################################################################################
@@ -100,7 +100,7 @@ Orderer: &OrdererDefaults
     OrdererType: solo
 
     Addresses:
-        - orderer.org2.example.com:7050
+        - orderer.org2.skraukosaur.com:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
