@@ -2,13 +2,15 @@
   "name": "FabricWebApp",
   "version": "0.0.1",
   "description": "An end-to-end demonstration app using Hyperledger Fabric.",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/LedgerDomain/FabricWebApp"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LedgerDomain/FabricWebApp"
   },
   "scripts": {
     "start": "DEBUG=hfc node app.js",
-    "test": "DEBUG=hfc node test.js"
+    "test": "DEBUG=hfc node test.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "fabric-client sample app",
@@ -24,6 +26,8 @@
     "express": "^4.15.2",
     "fabric-ca-client": "1.0.1",
     "fabric-client": "1.0.1",
-    "winston": "^2.2.0"
-  }
+    "winston": "^2.2.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
